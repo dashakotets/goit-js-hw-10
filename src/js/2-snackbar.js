@@ -39,7 +39,7 @@ const onSubmitButton = event => {
                     message: `Fulfilled promise in ${delay}ms`,
                     position: "topRight",
                  })
-            }, delay*1000)
+            }, delay)
             
         })
         .catch(delay => {
@@ -49,7 +49,7 @@ const onSubmitButton = event => {
                     message: `Rejected promise in ${delay}ms`,
                     position: "topRight",
                  })
-            }, delay*1000)
+            }, delay)
         })
 
     event.target.reset();
