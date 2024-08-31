@@ -22,34 +22,32 @@ const onSubmitButton = event => {
     const promise = new Promise((resolve, reject) => {
         const formState = formDatafromLs.state;
         const formDelay = formDatafromLs.delay;
-        if (formState === "fulfilled") {
-            resolve(formDelay);
-        } else if (formState === "rejected") {
-            reject(formDelay);
-        };
 
-        return promise;
+        setTimeout(() => {
+            if (formState === "fulfilled") {
+                resolve(formDelay);
+            } else if (formState === "rejected") {
+                reject(formDelay);
+            }
+        }, formDelay);
+
     });
 
     promise
         .then(delay => {
-            setTimeout(() => {
-                iziToast.success({
+            iziToast.success({
                     title: 'Fulfilled',
                     message: `Fulfilled promise in ${delay}ms`,
                     position: "topRight",
                  })
-            }, delay)
             
         })
         .catch(delay => {
-            setTimeout(() => {
-                iziToast.error({
+            iziToast.error({
                     title: 'Rejected',
                     message: `Rejected promise in ${delay}ms`,
                     position: "topRight",
                  })
-            }, delay)
         })
 
     event.target.reset();
